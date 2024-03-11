@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Elemento ao DOM</title>
+</head>
+<body>
+
+<!-- <p id="texto">Texto inicial.</p> -->
+<button id="botao">Adicionar Item</button>
+<ul id="lista"></ul>
+
+<ul id="list">
+    <li>Item 1 <button class="remover">Remover</button></li>
+    <li>Item 2 <button class="remover">Remover</button></li>
+    <li>Item 3 <button class="remover">Remover</button></li>
+</ul>
+
+<script>
+    const botao = document.getElementById('botao');
+    const lista = document.getElementById('lista');
+
+    const botoesRemover = document.querySelectorAll('.remover');
+    const list = document.getElementById('list');
+
+    // Adiciona event listener a cada botão "Remover"
+    botoesRemover.forEach(botao => {
+        botao.addEventListener('click', function() {
+            //Remove o item da lista quando o botão "Remover" é clicado
+            const itemParaRemover = this.parentNode; // O pai do botão é o item de lista
+            list.removeChild(itemParaRemover);
+        });
+    });
+
+    botao.addEventListener('click', function() {
+        // Cria um novo item de lista
+        const novoItem = document.createElement('li');
+        novoItem.innerText = 'Novo item';
+
+        // Adiciona o novo item á lista
+        lista.appendChild(novoItem);
+    })
+
+    // Seleciona o parágrafo e o botão
+    //const paragrafo = document.getElementById('texto');
+    //const botao = document.getElementById('botao');
+
+    // Adiciona um event listener para o botão
+    //botao.addEventListener('click', function() {
+        // Altera o texto do parágrafo quando o botão é clicado
+      //  paragrafo.innerText = 'Texto alterado!';
+    //});
+</script>
+
+</body>
+</html>
